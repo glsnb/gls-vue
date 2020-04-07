@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-自建</title>
+</head>
+<body>
+    <script src="vue.js"></script>
+    <script>
+        let data = {
+            test: 'i is test',
+            descript: {
+                name: 'gy',
+                age: 26
+            }
+        }
+        const app = new Vue({
+            data
+        })
+        data.descript.name = 'wxy';
+        // app.$data.test = 'aa';
+        console.log(app.descript.name);
+    </script>
+</body>
+</html>
