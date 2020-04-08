@@ -6,6 +6,7 @@ import communication from '@/components/communication/grandFather';
 import slot from '@/components/slot';
 import form from '@/components/form';
 import tree from '@/components/tree';
+import notice from '@/components/notice';
 import routerIndex from '@/components/router';
 import routerHome from '@/components/router/routerHome';
 import routerDetial from '@/components/router/routerDetial';
@@ -38,6 +39,11 @@ export default new Router({
       path: '/tree',
       name: 'tree',
       component: tree
+    },
+    {
+      path: '/notice',
+      name: 'notice',
+      component: notice
     },
     {
       path: '/router',
