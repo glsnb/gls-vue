@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import user from './user';
 
 Vue.use(Vuex)
 
@@ -29,4 +30,9 @@ const data = {
     }
 }
 
-export default new Vuex.Store(data)
+export default new Vuex.Store({
+    ...data,
+    modules: {
+        user
+    }
+})

@@ -19,6 +19,7 @@
 import Input from './input';
 import Item from './item';
 import Form from './form';
+import store from '@/store/store.js';
 
 export default {
     components: {
@@ -28,6 +29,7 @@ export default {
     },
     data() {
         return {
+            username: 'admin',
             model: {username: '', password: ''},
             rules: {
                 username: [{required: true, message: "用户名必填"}],
@@ -42,6 +44,16 @@ export default {
             this.$refs.form.validate((isValid) => {
                 console.log(isValid ? 'yes': 'no');
             })
+            // 未登录，去登录
+            // if (!store.state.user.token) {
+            //     this.$store.dispatch('user/login', {username: this.username})
+            //     .then(() => {
+            //         this.$router.push({
+            //             path: this.$route.query.redirect || '/'
+            //         })
+            //         console.log(this.$router);
+            //     })
+            // }
         }
     }
 }

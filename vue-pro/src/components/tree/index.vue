@@ -4,16 +4,20 @@
         <ul>
             <item :model="treeData"/>
         </ul>
+        <pre v-highlightjs="tree"><code class="javascript"></code></pre>
     </div>
 </template>
 
 <script>
+import tree from '!!raw-loader!@/components/tree/test.vue'
+
 import item from './item';
 
 export default {
     components: { item },
     data() {
         return {
+            tree,
             treeData: {
                 title: "Web全栈架构师",
                 children: [
@@ -77,5 +81,8 @@ export default {
 <style>
 li {
     list-style: none;
+}
+.javascript.hljs{
+    text-align: left;
 }
 </style>

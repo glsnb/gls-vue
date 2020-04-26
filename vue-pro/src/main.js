@@ -2,9 +2,15 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import router  from './router'
+import {asyncRoutes}  from './router'
+import VueHighlightJS from 'vue-highlightjs'
+
 import store from './store/store'
 // import store from './vuex/store'
+
+router.addRoutes(asyncRoutes);
+Vue.use(VueHighlightJS)
 
 Vue.config.productionTip = false
 
@@ -25,6 +31,7 @@ class Bus {
 }
 
 Vue.prototype.$bus = new Bus();
+
 
 /* eslint-disable no-new */
 new Vue({

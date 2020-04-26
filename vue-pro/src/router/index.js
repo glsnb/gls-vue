@@ -10,9 +10,40 @@ import notice from '@/components/notice';
 import routerIndex from '@/components/router';
 import routerHome from '@/components/router/routerHome';
 import routerDetial from '@/components/router/routerDetial';
+import code from '@/components/code/code.vue';
 
 Vue.use(Router)
-
+export const asyncRoutes = [
+  {
+    path: '/router',
+    name: 'routerIndex',
+    component: routerIndex,
+    children: [
+      {
+        path: '/router/home',
+        name: 'routerHome',
+        component: routerHome,
+        // component: () => {
+        //   import(/* webpackChunkName: "routerHome" */ "@/components/router/routerHome.vue"),
+        // },
+        meta: {
+          role: ['admin']
+        }
+      },
+      {
+        path: '/router/detial',
+        name: 'routerDetial',
+        component: routerDetial,
+        // component: () => {
+        //   import(/* webpackChunkName: "routerDetial" */'@/components/router/routerDetial')
+        // },
+        meta: {
+          role: ['outsider']
+        }
+      }
+    ]
+  }
+]
 export default new Router({
   routes: [
     {
@@ -46,21 +77,38 @@ export default new Router({
       component: notice
     },
     {
-      path: '/router',
-      name: 'routerIndex',
-      component: routerIndex,
-      children: [
-        {
-          path: '/router/home',
-          name: 'routerHome',
-          component: routerHome
-        },
-        {
-          path: '/router/detial',
-          name: 'routerDetial',
-          component: routerDetial
-        }
-      ]
+      path: '/code',
+      name: 'code',
+      component: code
     }
+    // {
+    //   path: '/router',
+    //   name: 'routerIndex',
+    //   component: routerIndex,
+    //   children: [
+    //     {
+    //       path: '/router/home',
+    //       name: 'routerHome',
+    //       component: routerHome,
+    //       // component: () => {
+    //       //   import(/* webpackChunkName: "routerHome" */ "@/components/router/routerHome.vue"),
+    //       // },
+    //       meta: {
+    //         role: ['admin']
+    //       }
+    //     },
+    //     {
+    //       path: '/router/detial',
+    //       name: 'routerDetial',
+    //       component: routerDetial,
+    //       // component: () => {
+    //       //   import(/* webpackChunkName: "routerDetial" */'@/components/router/routerDetial')
+    //       // },
+    //       meta: {
+    //         role: ['admin', 'outsider']
+    //       }
+    //     }
+    //   ]
+    // }
   ]
 })
