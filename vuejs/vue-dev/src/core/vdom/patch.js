@@ -401,7 +401,9 @@ export function createPatchFunction (backend) {
     }
   }
 
+  // 重排算法
   function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly) {
+    // 四个指针
     let oldStartIdx = 0
     let newStartIdx = 0
     let oldEndIdx = oldCh.length - 1
