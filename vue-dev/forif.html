@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for/if优先级</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 同级 -->
+        <p v-for="item in list" :key="item" v-if="list.length">{{item}}</p>
+        <!-- 不同级 -->
+        <ul v-if="list.length">
+            <li v-for="item in list" :key="item">{{item}}</li>
+        </ul>
+        <p v-for="item in showArrObj" :key="item.id">{{item.title}}</p>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+const vm = new Vue({
+    el: '#app',
+    data: {
+        msg: 'hello Web',
+        list: ['web零基础就业班', 'web高级工程师', 'web全栈架构师'],
+        arrObj: [
+            {
+                id: 0,
+                title: 'web零基础就业班',
+                isShow: false
+            },
+            {
+                id: 1,
+                title: 'web高级工程师',
+                isShow: true
+            },
+            {
+                id: 100,
+                title: 'web全栈架构师',
+                isShow: true
+            }
+        ]
+    },
+    // 根实例上data即可以使function也可以是{}
+    // data() {
+    //     return {
+    //         msg: 'hello'
+    //     }
+    // }
+    computed: {
+        showArrObj() {
+            return this.arrObj.filter(item => item.isShow);
+        }
+    }
+})
+// console.log(vm.$options.render);
+
+// v-for v-if 同级
+// with(this){return _c('div',{attrs:{"id":"app"}},_l((list),function(item){return (list.length)?_c('p',{key:item},[_v(_s(item))]):_e()}),0)}
+
+// v-for v-if 不同级
+// with(this){return _c('div',{attrs:{"id":"app"}},[(list.length)?_c('ul',_l((list),function(item){return _c('li',{key:item},[_v(_s(item))])}),0):_e()])}
+
+</script>
+</html>

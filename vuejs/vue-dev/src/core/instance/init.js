@@ -29,12 +29,13 @@ export function initMixin (Vue: Class<Component>) {
     // a flag to avoid this being observed
     vm._isVue = true
     // merge options
-    if (options && options._isComponent) {
+    // 合并选型
+    if (options && options._isComponent) { // 组件
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
       // internal component options needs special treatment.
       initInternalComponent(vm, options)
-    } else {
+    } else { // 根实例
       vm.$options = mergeOptions(
         resolveConstructorOptions(vm.constructor),
         options || {},

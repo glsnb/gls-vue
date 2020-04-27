@@ -48,8 +48,10 @@ export function proxy (target: Object, sourceKey: string, key: string) {
 export function initState (vm: Component) {
   vm._watchers = []
   const opts = vm.$options
+  // 属性初始化
   if (opts.props) initProps(vm, opts.props)
   if (opts.methods) initMethods(vm, opts.methods)
+  // 数据响应式
   if (opts.data) {
     initData(vm)
   } else {
@@ -111,6 +113,7 @@ function initProps (vm: Component, propsOptions: Object) {
 
 function initData (vm: Component) {
   let data = vm.$options.data
+  // 如果data是函数，则执行将其结果作为data选项的值
   data = vm._data = typeof data === 'function'
     ? getData(data, vm)
     : data || {}
