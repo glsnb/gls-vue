@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for/if优先级</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <com></com>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+Vue.component('com', {
+    template: '<h6>{{name}}</h6>',
+    data() {
+        return {
+            name: '旺财'
+        }
+    }
+    //  The "data" option should be a function that returns a per-instance value in component definitions.
+    // data: {
+    //     name: '旺财'
+    // }
+})
+const vm = new Vue({
+    el: '#app',
+    data: {
+        msg: 'hello Vue'
+    }
+    // 根实例上data即可以使function也可以是{}
+    // data() {
+    //     return {
+    //         msg: 'hello'
+    //     }
+    // }
+})
+</script>
+</html>
