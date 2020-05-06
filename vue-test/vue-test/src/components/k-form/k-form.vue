@@ -7,6 +7,8 @@
 <script>
 
     export default {
+        name: 'kForm',
+        componentName: 'kForm',
         provide() {
             return {
                 form: this
@@ -27,11 +29,16 @@
                 }
             }
         },
+        created () {
+            this.items = []
+            this.$on('form.addItem', item => this.items.push(item));
+        },
         methods: {
             validate(cb) {
-                const tasks = this.$children
-                    .filter(item => item.prop)
-                    .map(item => item.validate())
+                // const tasks = this.$children
+                //     .filter(item => item.prop)
+                //     .map(item => item.validate())
+                const tasks = this.items.map(item => item.validate())
                 // 统一判断
                 Promise.all(tasks)
                     .then(() => cb(true))

@@ -12,11 +12,13 @@
 
 <script>
     import Schema from 'async-validator'
+    import emitter from './emitter'
 
     export default {
         name: 'kItem',
         componentName: 'kItem',
         inject: ['form'],
+        mixins: [emitter],
         props: {
             label: {
                 type: String,
@@ -34,6 +36,11 @@
         },
         mounted () {
             this.$on('validate', () => {this.validate()});
+
+            // 派发事件，通知k-form，新增一个k-item实例，之后在k-form中遍历所有实例的效验
+            if (this.prop) {
+                this.dispatch('kForm', 'form.addItem', [this])
+            }
         },
         methods: {
             validate() {

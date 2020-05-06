@@ -6,9 +6,7 @@
                 <kInput placeholder="请输入用户名" v-model="model.username"></kInput>
             </kItem>
             <kItem label="密码" prop="userpasspord">
-                <son>
-                    <kInput placeholder="请输入密码" v-model="model.userpasspord" type="password"></kInput>
-                </son>
+                <kInput placeholder="请输入密码" v-model="model.userpasspord" type="password"></kInput>
             </kItem>
             <kItem>
                 <button @click="onLogin">Login</button>
@@ -22,13 +20,11 @@
     import kItem from './k-item'
     import kInput from './k-input'
 
-    import son from '../communication/son'
     export default {
         components: {
             kForm,
             kItem,
-            kInput,
-            son
+            kInput
         },
         data() {
             return {

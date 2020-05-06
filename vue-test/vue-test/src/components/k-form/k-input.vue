@@ -24,7 +24,8 @@
                 // this.$parent.$emit('validate')
 
                 // 找到对应的父亲，派发事件
-                this.dispatch('kItem', 'validate', () => {this.validate()});
+                this.dispatch('kItem', 'validate');
+
             },
             // 查询该组件的父组件，派发事件
             dispatch(componentName, eventName, params) {

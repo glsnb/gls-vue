@@ -39,7 +39,8 @@ Vue.prototype.$notice = (props) => {
   comp.show()
   return comp
 }
-new Vue({
+// new Vue()根实例，里面会有根组件
+new Vue({ // 根实例
   router,
-  render: h => h(App),
+  render: h => h(App), // App根组件
 }).$mount('#app')
