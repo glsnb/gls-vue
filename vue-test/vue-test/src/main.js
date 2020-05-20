@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import {create} from '@/components/notice/utils/create.js'
 import Notice from '@/components/notice'
+import store from './store'
 
 Vue.use(ElementUI)
 
@@ -40,7 +41,12 @@ Vue.prototype.$notice = (props) => {
   return comp
 }
 // new Vue()根实例，里面会有根组件
-new Vue({ // 根实例
+new Vue({
+  // 根实例
   router,
-  render: h => h(App), // App根组件
+
+  store,
+
+  // App根组件
+  render: h => h(App)
 }).$mount('#app')

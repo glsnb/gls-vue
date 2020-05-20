@@ -6,6 +6,7 @@
         <button @click="throwBomb">开始扔了</button>
         <button @click="$toast('点击弹出提示')">弹窗toast</button>
         <button @click="$glsToast('1', '2')">工资日</button>
+        <p v-if="true" v-show="false">v-if和v-for哪个优先级更高？v-if优先级更高</p>
     </div>
 </template>
 
@@ -55,22 +56,20 @@ export default {
         //     console.log('error' + reject);
         // });
         // this.add();
-        // console.log('虽然我在后面，但我先执行了');
-        const persion = this.simpleDog('gg', '18')
-        console.log(persion.name);
-        const per = this.simpleDog('ww', '18')
-        console.log(per === persion);
-        
+        var persion = {
+            id: '2124r4245'
+        }
+        var obj = {
+            id: 123456,
+            getId() {
+                return this.id
+            }
+        }
+        var fn = obj.getId;
+        // console.log(fn.bind(persion));
         
     },
     methods: {
-        simpleDog(name, age) {
-            const me = {
-                name,
-                age
-            }
-            return me;
-        },
         async add() {
             let resolute = await this.timer();
             let resolute2 = await this.timer2();

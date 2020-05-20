@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>k-vue</title>
+</head>
+<body>
+    <div id="app">
+        {{counter}}
+    </div>
+    <script src="k-observe.js"></script>
+    <script>
+        // new Vue({
+        //     el: '#app',
+        //     data: {
+        //         counter: 18
+        //     },
+        //     mounted() {
+        //         // setInterval(() => {
+        //         //     this.counter++
+        //         // }, 1000);
+        //     }
+        // })
+        // var obj = {}
+        // defineActive(obj, 'car', '奔驰');
+        // obj.car
+        // obj.car = '宝马'
+        // obj.car
+
+        const obj = { foo: 'foo', bar: 'bar', baz: { a: 1 } }
+        observe(obj)
+        // obj.foo
+        // obj.foo = 'benz'
+        obj.baz.a = 2
+        // obj.baz.a
+        
+        // 新来的需要进行培训
+        $set(obj, 'ben', 'mm')
+        obj.ben = 'benz'
+        obj.ben
+        
+        function updata() {
+            app.innerText = obj.ben
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <template>
-    <div>11
+    <div>
         <i-code slot="code" lang="html">{{ code }}</i-code>
     </div>
 </template>

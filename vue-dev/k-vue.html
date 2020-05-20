@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>k-vue</title>
+</head>
+<body>
+    <div id="app">
+        <h3>KVue</h3>
+        <p>{{counter}}</p>
+        <p k-text="counter"></p>
+        <p k-html="desc"></p>
+    </div>
+    <script src="k-vue.js"></script>
+    <script>
+        const vm = new kVue({
+            el: '#app',
+            data: {
+                counter: 10,
+                desc: '<span style="color:red">kvue可还行</span>'
+            }
+        })
+        // vm.$data.count = 22
+        // vm.count = 33
+        // console.log(vm.$data.count);
+        // console.log(vm);
+
+        setTimeout(() => {
+            vm.counter++
+        }, 1000);
+    </script>
+
+</body>
+</html>

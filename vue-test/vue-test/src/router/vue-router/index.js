@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Router from '../k-router'
+// import Router from './kRouter-children'
+
 
 // import communication from '@/components/communication';
 // import helloworld from '@/components/HelloWorld';
@@ -26,13 +28,28 @@ const constRouters = [
         children: [
             {
                 
-                path: '/communication/1',
-                name: 'communicationHello',
+                path: '/communication/son',
+                name: 'communicationSon',
                 // component: helloworld
-                component: () => import('@/components/communication')
+                component: () => import('@/components/communication/son')
                 
             }
         ]
+    },
+    {
+        path: '/grand',
+        name: 'grand',
+        component: () => import('@/components/communication/grandFather'),
+    },
+    {
+        path: '/kform',
+        name: 'kform',
+        component: () => import('@/components/k-form')
+    },
+    {
+        path: '/ktoast',
+        name: 'ktoast',
+        component: () => import('@/components/toast')
     }
 ]
 export default new Router({
