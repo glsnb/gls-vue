@@ -12,6 +12,7 @@
         <p k-text="counter"></p>
         <p k-html="desc"></p>
         <input k-model="desc" />
+        <button @click="handleClick">增长</button>
     </div>
     <script src="k-vue.js"></script>
     <script>
@@ -20,16 +21,21 @@
             data: {
                 counter: 10,
                 desc: '<span style="color:red">kvue可还行</span>'
-            }
+            },
+            methods: {
+                handleClick() {
+                    this.counter++
+                }
+            },
         })
         // vm.$data.count = 22
         // vm.count = 33
         // console.log(vm.$data.count);
         // console.log(vm);
 
-        setTimeout(() => {
-            vm.counter++
-        }, 1000);
+        // setTimeout(() => {
+        //     vm.counter++
+        // }, 1000);
     </script>
 
 </body>

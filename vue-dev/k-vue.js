@@ -163,6 +163,14 @@ class Compile {
                 const dir = name.substring(2)
                 this[dir] && this[dir](node, value)
             }
+            // 事件处理
+            if (name.indexOf('@') === 0) {
+                // @click="onClick"
+                const dir = name.substring(1) // click
+                // const exp = this.$vm.methods[value]
+                // 事件监听 value=onClick, dir=click
+                this.eventHandler(node, value, dir)
+            }
         })
     }
 
@@ -184,6 +192,12 @@ class Compile {
         node.addEventListener('input', e => {
             this.$vm[value] = e.target.value
         })
+    }
+
+    // 处理事件
+    eventHandler(node, exp, dir) {
+        const fn = this.$vm.$options.methods && this.$vm.$options.methods[exp]
+        node.addEventListener(dir, fn.bind(this.$vm))
     }
 }
 
