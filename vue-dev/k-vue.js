@@ -145,6 +145,10 @@ class Compile {
     htmlUpdater(node, value) {
         node.innerHTML = value
     }
+    modelUpdater(node, value) {
+        // input元素双绑
+        node.value = value
+    }
 
     // 编译元素
     compileElement(node) {
@@ -170,6 +174,16 @@ class Compile {
     // k-html
     html(node, value) {
         this.update(node, value, 'html')
+    }
+
+    // k-model => 语法糖，value和事件
+    model(node, value) {
+        // update方法只完成赋值和更新
+        this.update(node, value, 'model')
+        // 事件监听
+        node.addEventListener('input', e => {
+            this.$vm[value] = e.target.value
+        })
     }
 }
 
