@@ -28,7 +28,7 @@
         // obj.car = '宝马'
         // obj.car
 
-        const obj = { foo: 'foo', bar: 'bar', baz: { a: 1 } }
+        const obj = { foo: 'foo', bar: 'bar', baz: { a: 1 }, arr: [1, 2] }
         observe(obj)
         // obj.foo
         // obj.foo = 'benz'
@@ -43,6 +43,10 @@
         function updata() {
             app.innerText = obj.ben
         }
+
+        // 数组响应式
+        obj.arr.push(3)
+        obj.arr
     </script>
 </body>
 </html>

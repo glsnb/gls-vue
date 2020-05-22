@@ -1,10 +1,12 @@
 <template>
     <div>
-        <child2 />
+        son:
+        <child2/>
         <child1
             :persion="persion"
         />
         <slot></slot>
+        <button @click="sendGrand">我要找爷爷</button>
     </div>
 </template>
 
@@ -36,6 +38,9 @@ import child2 from './child2'
             }
         },
         methods: {
+            sendGrand() {
+                this.$emit('on-son');
+            }
         },
     }
 </script>

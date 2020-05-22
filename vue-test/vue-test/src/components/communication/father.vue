@@ -1,5 +1,10 @@
 <template>
-    <div>father</div>
+    <div>
+        <div>{{msg}}</div>
+        <hr />
+        <son v-on="$listeners"></son>
+    </div>
+
 </template>
 <script>
 export default {
@@ -7,6 +12,9 @@ export default {
         return {
             msg: 'my is father'
         }
-    }
+    },
+    components: {
+        son: () => import('./son')
+    },
 }
 </script>

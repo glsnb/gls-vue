@@ -1,6 +1,7 @@
 <template>
     <div>
         child2-{{web}}
+        
     </div>
 </template>
 
@@ -18,6 +19,8 @@
             //     console.log(msg + '告诉我了');
             // });
         },
+        methods: {
+        }
     }
 </script>
 
